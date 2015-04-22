@@ -6,7 +6,7 @@ var Node = function(value){
   this.next = null;
 };
 
-var Linkedlist = function(value){
+var Linkedlist = function(){
 
   this.addToTail = function(value){
 
@@ -32,3 +32,11 @@ var Linkedlist = function(value){
     return oldHead;
   }
 }
+
+var a = new Linkedlist();
+a.addToTail(1);
+a.addToTail(2);
+a.addToTail(3);
+a.addToTail(4);
+a.addToTail(5);
+a.addToTail(6);
