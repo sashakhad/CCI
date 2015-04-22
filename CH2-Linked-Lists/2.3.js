@@ -21,5 +21,12 @@ var findMid = function(list){
 }
 
 var removeMidNode = function(list){
-
+  var count = 1;
+  var node = list.head;
+  var mid = findMid(list);
+  while(count !== mid){
+    count++;
+    node = node.next;
+  }
+  removeNode(node);
 }
