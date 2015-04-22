@@ -10,5 +10,16 @@ var removeNode = function(node){
 }
 
 var findMid = function(list){
+  var node = list.head;
+  var count = 0;
+  while(node){
+    count++;
+    node = node.next;
+  };
+  var mid = Math.floor(Math.round(count/2))
+  return mid;
+}
+
+var removeMidNode = function(list){
 
 }
