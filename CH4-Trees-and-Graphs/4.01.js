@@ -22,8 +22,19 @@ var Tree = function(value){
       }
     }
   }
+  this.contains = function(val){
+    if(this.value === val){
+      return true;
+    } else if(val < this.value && this.left){
+      return this.left.contains(val);
+    } else if(val > this.value && this.right){
+      return this.right.contains(val);
+    } 
+    return false;
+  }
 }
 
+//For constructing a tree and testing it
 // var a = new Tree(5);
 // a.addChild(2)
 // a.addChild(1)
