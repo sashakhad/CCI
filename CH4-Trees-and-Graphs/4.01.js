@@ -32,13 +32,22 @@ var Tree = function(value){
     } 
     return false;
   }
+  this.applyCallback = function(cb){
+    cb(this.value);
+    if(this.left){
+      this.left.applyCallback(cb);
+    } 
+    if(this.right){
+      this.right.applyCallback(cb);
+    }
+  }
 }
 
 //For constructing a tree and testing it
-// var a = new Tree(5);
-// a.addChild(2)
-// a.addChild(1)
-// a.addChild(3)
-// a.addChild(7)
-// a.addChild(6)
-// a.addChild(9)
+var a = new Tree(5);
+a.addChild(2)
+a.addChild(1)
+a.addChild(3)
+a.addChild(7)
+a.addChild(6)
+a.addChild(9)
