@@ -1,3 +1,5 @@
+//Implement a queue
+
 var Queue = function(){
   var storage = [];
 
@@ -6,6 +8,6 @@ var Queue = function(){
   }
 
   this.dequeue = function(){
-    return storage.unshift();
+    return storage.shift();
   }
 }
