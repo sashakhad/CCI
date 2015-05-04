@@ -10,16 +10,37 @@ var storage = [];
 //colliding with one another. You may need to store the starts and ends in a globally accessibile 
 //function or variable so that the stacks can have knowledge of each others' starting and ending points.
 
+
+var adjustIndices = function(start, end){
+  for(var stack in stacks){
+    if(stacks[stack].start === end){
+      //some adjustment here
+    }
+    if(stacks[stack].end === start){
+      //some adjustment here
+    }
+  }
+}
+
+var stacks = {}
+var stackID = 0;
+var setID = function(stack){
+  stacks[stackID] = stack;
+  stackID++;
+}
+
 var Stack = function(start, end){
-  var start = start;
-  var end = end;
+  this.ID = stackID;
+  setID(this);
+  this.start = start;
+  this.end = end;
   this.add = function(val){
     storage.splice(end, 0, val);
-    end++;
+    this.end++;
   }
 
   this.remove = function(){
     storage.splice(end, 1)
-    end--;
+    this.end--;
   }
 }
