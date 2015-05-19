@@ -11,6 +11,8 @@
 //Input: (6 -> 1 -> 7) + (2 - > 9 -> 5). That is, 617 + 295.
 //Output: 9 - > 1 -> 2. That is, 912.
 
+//TODO: refactor: put comments in appropriate spots, modularize, etc
+
 var sumLists = function(list1, list2){
   //store the numbers in a stack so that they're in the proper order
     //unshift them into an array
@@ -32,8 +34,9 @@ var sumLists = function(list1, list2){
   var values2 = storeValues(list2);
 
   var arrayToNum = function(arr){
+    debugger
     var str = JSON.stringify(arr);
-    str = str.replace(/,/g, "");
+    str = str.replace(/[\[,\]]/g, "");
     var num = JSON.parse(str);
     return num;
   }
@@ -41,12 +44,12 @@ var sumLists = function(list1, list2){
   var a = arrayToNum(values1);
   var b = arrayToNum(values2);
 
-  var sum = sumNums(a, b).split("");
+  var sum = sumNums(a, b)
+  sum = JSON.stringify(sum).split("");
 
 
   var newList = new Linkedlist();
   while(sum.length){
-    debugger
     var lastDigit = "" + sum.pop()
     newList.addToTail(lastDigit);
   }
