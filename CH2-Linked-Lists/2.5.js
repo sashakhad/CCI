@@ -23,7 +23,7 @@ var sumLists = function(list1, list2){
       storage.push(node.value);
       node = node.next;
     }
-    return storage;
+    return storage.reverse();
   }
 
   var sumNums = function(a, b){
@@ -32,14 +32,6 @@ var sumLists = function(list1, list2){
 
   var values1 = storeValues(list1);
   var values2 = storeValues(list2);
-
-  var reverse = function(arr){
-    var result = [];
-    for (var i = 0; i < arr.length; i++) {
-      result.push(arr[arr.length - 1 - i];
-    };
-    return result;
-  }
 
   var arrayToNum = function(arr){
     var str = JSON.stringify(arr);
