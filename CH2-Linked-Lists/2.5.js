@@ -33,8 +33,15 @@ var sumLists = function(list1, list2){
   var values1 = storeValues(list1);
   var values2 = storeValues(list2);
 
+  var reverse = function(arr){
+    var result = [];
+    for (var i = 0; i < arr.length; i++) {
+      result.push(arr[arr.length - 1 - i];
+    };
+    return result;
+  }
+
   var arrayToNum = function(arr){
-    debugger
     var str = JSON.stringify(arr);
     str = str.replace(/[\[,\]]/g, "");
     var num = JSON.parse(str);
