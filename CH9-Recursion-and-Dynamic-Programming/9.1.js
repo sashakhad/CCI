@@ -4,11 +4,9 @@
 var totalPaths = function(stairs){
   var paths = 0;
   var countSteps = function(n){
-    if(n === 0){
-      paths++;
-    } else if(n < 0){
-      //do nothing
-    } else {
+    if(n === 0) paths++;
+    else if(n < 0) return
+    else {
       countSteps(n - 1);
       countSteps(n - 2);
       countSteps(n - 3);
@@ -17,3 +15,20 @@ var totalPaths = function(stairs){
   countSteps(stairs);
   return paths;
 }
+
+//Another recursive means of solving the problem
+//This will, however, have a more limited call stack when proper tail recursion is introduced in ES6
+var stairPaths = function(n) {
+  debugger
+  if (n === 0)    return 1;
+  else if (n < 0) return 0;
+  return stairPaths(n-1) + stairPaths(n-2) + stairPaths(n-3);
+}
+
+// Illustration of how stairPaths would operate
+// stairPaths(3) 
+  // stairPaths(2) + stairPaths(1) + stairPaths(0)
+    // stairPaths(1) + stairPaths(0) + stairPaths(-1)
+      // stairPaths(1) + stairPaths(0) + stairPaths(-1)
+    // stairPaths(0) + stairPaths(-1) + stairPaths(-2)
+// --> 4
