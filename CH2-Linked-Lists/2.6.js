@@ -11,20 +11,32 @@ var startOfLoop = function(list){
 
   //create an array with stringified nodes
   while(node){
-    nodes.push(JSON.stringify(node));
+    for (var i = 0; i < nodes.length; i++) {
+      if(nodes[i] === node) return node;
+    };
+    nodes.push(node);
     node = node.next;
   }
 
   //iterate through list to compare
     //check if current node, when stringified, is same as any item in array 
-  node = list.head
-  while(node){
-    for (var i = 0; i < nodes.length; i++) {
-      if(JSON.stringify(node) === nodes[i]){
-        return node;
-      }
-    };
-  }
+  // node = list.head
+  // while(node){
+  //   for (var i = 0; i < nodes.length; i++) {
+  //     if(JSON.stringify(node) === nodes[i]){
+  //       return node;
+  //     }
+  //   };
+  // }
 
   return false;
 }
+
+//construct a corrupt linked list
+// var a = new Linkedlist();
+// a.addToTail("A");
+// a.addToTail("B");
+// a.addToTail("C");
+// a.addToTail("D");
+// a.addToTail("E");
+// a.addToTail("C");
