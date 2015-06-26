@@ -4,51 +4,34 @@
 //FOLLOW UP
 //Imagine certain spots are "off limits," such that the robot cannot step on them. Design an algorithm to find a path for the robot from the top left to the bottom right.
 
-var Grid = function(x, y){
-  Array.call(this);
-  //create the rows
-  for (var i = 0; i < x ; i++) {
-    var row = [];
-    //create the columns
-    for (var j = 0; j < y; j++) {
-      row.push(false);
-    };
-    this.push(row);
-  };
-}
-
-var robotPaths = function(grid){
-  
+var totalPaths = function(m, n){
   var paths = 0;
-
-  var checkPaths = function(x, y){
-    //check if you on the bottom right
-    debugger;
-    if(x === grid.length - 1 && y === grid[0].length - 1){
-      paths++;
+  var findPaths = function(x, y){
+    if(x === m - 1 && y === n -1){
+      return paths++
     }
-
-    //check if the space to the right and bottom of robot has been visited
-    //if not, toggle the space and recurse on that spot
-
-    if(!grid[x + 1] && x < grid.length - 1){
-      grid.toggle(grid, x + 1, y)
-      checkPaths(x + 1, y)
-    }
-
-    if(!grid[x][y + 1] && x < grid[0].length - 1){
-      grid.toggle(grid, x + 1, y)
-      checkPaths(x + 1, y)
-    }
+    if(x >= m) return
+    if(y >= n) return
+    //check space to the right
+    findPaths(x + 1, y);
+    //check space below
+    findPaths(x, y + 1);
   }
-  checkPaths(0,0);
+  findPaths(0,0);
   return paths;
 }
 
-Grid.prototype = Object.create(Array.prototype);
-
-Grid.prototype.constructor = Grid;
-
-Grid.prototype.toggle = function(grid, x, y){
-  grid[x][y] = !grid[x][y];
+//You can also do the same thing without a paths counter
+var totalPaths = function(m, n){
+  var findPaths = function(x, y){
+    if(x === m - 1 && y === n -1){
+      return 1
+    }
+    if(x >= m) return 0
+    if(y >= n) return 0
+    //check space to the right
+    return findPaths(x + 1, y) + findPaths(x, y + 1);
+    //check space below
+  }
+  return findPaths(0,0);
 }
